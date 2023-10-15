@@ -32,30 +32,31 @@ const [tab3Info,setTab3Info] = useState([]);
         setTab3Info((prev)=>[item,...prev]);
       }
       
+      
   }
   
 
-  const deleteHandler=(e)=>{
+  const deleteHandler=(e,key)=>{
     const mainParent = e.target.parentElement.parentElement;
     mainParent.removeChild(mainParent.lastElementChild);
-    localStorage.removeItem(formData.id);
+    localStorage.removeItem(key);
   }
   return (
     <div className="app">
       <OrderForm formHandler={formHandler}/>
       <ul id="table1List"><h2>Table 1</h2> 
   {tab1Info.map((item)=>(
-    <li key={item.id}>{item.dish} - {item.table} - {item.price} <button onClick={deleteHandler}>Delete</button></li>
+    <li key={item.id}>{item.dish} - {item.table} - {item.price} <button onClick={(e)=>deleteHandler(e,item.id)}>Delete</button></li>
   ))}
    </ul>
    <ul id="table2List"><h2>Table 2</h2> 
   {tab2Info.map((item)=>(
-    <li key={item.id}>{item.dish} - {item.table} - {item.price} <button onClick={deleteHandler}>Delete</button></li>
+    <li key={item.id}>{item.dish} - {item.table} - {item.price} <button onClick={(e)=>deleteHandler(e,item.id)}>Delete</button></li>
   ))}
    </ul>
    <ul id="table3List"><h2>Table 3</h2> 
   {tab3Info.map((item)=>(
-    <li key={item.id}>{item.dish} - {item.table} - {item.price} <button onClick={deleteHandler}>Delete</button></li>
+    <li key={item.id}>{item.dish} - {item.table} - {item.price} <button onClick={(e)=>deleteHandler(e,item.id)}>Delete</button></li>
   ))}
    </ul>
     </div>
